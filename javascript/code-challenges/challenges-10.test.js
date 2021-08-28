@@ -26,10 +26,7 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  return matrix.reduce(function(acc,val) {
-    
-    return acc;
-  });
+  return Math.max(...matrix.flat());
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,14 +44,14 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  return matrix.flat().reduce((acc,val) => acc + val, 0);
 };
 
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-You friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies. Pat has data for the hourly sales of cookies per hour for each store. He wants to create an array of the total number of cookies sold per hour for all of his stores combined.
+Your friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies. Pat has data for the hourly sales of cookies for each store. He wants to create an array of the total number of cookies sold per hour for all of his stores combined.
 
 Write a function named grandTotal that adds up the cookies sales for each hour of operation for all of the stores combined. For example, the first element in the hourlySales array should be the sum of the cookies sold in the 9:00 a.m. hour at all five stores combined.
 
@@ -74,8 +71,7 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  return stores.reduce((acc, val) => acc.map((v, i) => v + val[i]));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -89,7 +85,9 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  const arr = [];
+  hours.forEach((hour, i) => arr.push({'sales': `${data[i]} cookies`, 'time': hour}));
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,8 +112,9 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr.filter(val => val.store === 'Pet store').flatMap(val => val.items.filter(val => val.name === 'Treats')).flatMap(val => val.quantity)[0];
 };
+// It's not pretty, and I've spent too much time on it to change it.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal

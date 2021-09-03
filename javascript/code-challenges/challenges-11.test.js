@@ -19,9 +19,9 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
-  return Object.keys(obj).map((key) => {
-    return `<li>${key}: </li>`;
-  }); //map(prop => `<li>${prop}</li>`);
+  return Object.entries(obj).map(entry => {
+    return `<li>${entry[0]}: ${entry[1]}</li>`;
+  });
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,8 +35,8 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  let count;
-  input.forEach(val => {
+  let count = 0;
+  input.flat().forEach(val => {
     if(target === val) {
       count += 1;
     }
@@ -55,7 +55,7 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  return input.flat().reduce((acc, val) => acc+=val);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,11 +71,15 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  return input.map(arr => arr.filter(num => {
+    if(Number.isInteger(num) && !(num % 5)) {
+      return Math.pow(2, num);
+    }
+  }));
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function named findMaleAndFemale that, given the Star Wars data, below,
 returns the names of the characters whose gender is either male or female.
@@ -137,17 +141,25 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  return data.filter(obj => obj.gender === 'female' || obj.gender === 'male').map(obj => obj.name).join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  let name;
+  let height = 1000;
+  data.forEach(obj => {
+    if(parseInt(obj.height) < height) {
+      height = parseInt(obj.height);
+      name = obj.name;
+    }
+  });
+  return name;
 };
 
 /* ------------------------------------------------------------------------------------------------

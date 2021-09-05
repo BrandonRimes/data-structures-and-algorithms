@@ -71,11 +71,8 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  return input.map(arr => arr.filter(num => {
-    if(Number.isInteger(num) && !(num % 5)) {
-      return Math.pow(2, num);
-    }
-  }));
+  let newArr = input.map(arr => arr.filter(num => Number.isInteger(num) && !(num % 5)));
+  return newArr.map(arr => arr.map(num => Math.pow(2, num)));
 };
 
 /* ------------------------------------------------------------------------------------------------

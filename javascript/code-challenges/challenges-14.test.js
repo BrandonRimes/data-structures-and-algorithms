@@ -11,7 +11,8 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  return arr.filter(str => str.match(/[Mr.Mrs.Dr.\s]/g));
+  let regex = (/([MD]\w+\.\s\w+)/g);
+  return arr.filter(str => regex.test(str));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +99,7 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  return arr.filter(obj => obj.mass > 77).map(obj => obj.name).join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,11 +117,23 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  if(property === 'price') {
+    return arr.sort((a,b) => a.price - b.price);
+  } else if(property === 'name') {
+    return arr.sort((a,b) => {
+      if(a.name < b.name) {
+        return -1;
+      } else if(a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function that determines if a given URL is secure, beginning with https://
 
@@ -132,11 +145,12 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  let regex = /(https:\/\/)/;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named detectTicTacToeWin that accepts a two-dimensional array of strings. Each string is guaranteed to be either "X", "O" or an empty string. Your function should check to see if any row, column, or either diagonal direction has three matching "X" or "O" symbols (non-empty strings), three-in-a-line.
 
@@ -155,7 +169,32 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const winCons = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  let win = false;
+  let flatBoart = board.flat();
+  for (let i = 0; i <= 7; i++) {
+    const winCon = winCons[i];
+    let a = flatBoart[winCon[0]];
+    let b = flatBoart[winCon[1]];
+    let c = flatBoart[winCon[2]];
+    if (a === '' || b === '' || c === '') {
+      continue;
+    }
+    if (a === b && b === c) {
+      win = true;
+      break;
+    }
+  }
+  return win;
 };
 
 /* ------------------------------------------------------------------------------------------------

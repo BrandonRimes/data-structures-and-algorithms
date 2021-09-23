@@ -9,6 +9,7 @@ Composed By: Brandon Rimes
 - **Challenges**:
   - [one](reverseArray/README.md) reverseArray
   - [two](insertShiftArray/README.md) insertShiftArray
+  - [three](binarySearch/README.md) binarySearch
 
 ## Overview
 

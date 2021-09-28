@@ -6,7 +6,6 @@ public class LinkedList {
   public void insert(int value)
   {
     Node node = new Node(value);
-    // node.value = value;
     node.Next = head;
     head = node;
   }
@@ -39,5 +38,27 @@ public class LinkedList {
     }
     linkedString += "Null";
     return linkedString;
+  }
+
+  public void append(int newValue)
+  {
+    Node current = head;
+    Node appendingNode = new Node(newValue);
+    if(current.Next == null)
+    {
+      appendingNode.Next = null;
+    } else {
+      current = current.Next;
+    }
+  }
+
+  public void insertBefore(int value, int newValue)
+  {
+
+  }
+
+  public void insertAfter(int value, int newValue)
+  {
+
   }
 }

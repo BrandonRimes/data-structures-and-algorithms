@@ -61,4 +61,20 @@ public class LinkedList {
   {
 
   }
+
+  public Node zipLists(Node list1node, Node list2node)
+  {
+    Node list3head = list1node;
+    while(list1node && list2node)
+    {
+      Node next1 = list1node.Next;
+      Node next2 = list2node.Next;
+      list1node.Next = list2node;
+      list2node.Next = next1;
+      list1node = next1;
+      list2node = next2;
+      System.out.println(list1node, list2node);
+    }
+    return list3head;
+  }
 }

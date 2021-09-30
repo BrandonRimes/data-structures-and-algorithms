@@ -2,9 +2,13 @@
 
 See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-code-challenges), in the Code 301 Setup Guide.
 
-## Repository Quick Tour and Usage
+## 401 Data Structures, Code Challenges
 
-### 301 Code Challenges
+[Challenges 1-3](java/README.md)
+
+[Challenges 5-8](javads/lib/src/main/java/javads/linkedList/README.md) Linked Lists
+
+## 301 Code Challenges
 
 Under the `javascript` folder, at the top level, is a sub-folder called `code-challenges`
 
@@ -17,7 +21,3 @@ To run your tests
 - Change to the `javascript` folder
 - run `npm test` to run all of the tests
 - run `npm test ##` to only run tests for challenge ## (i.e. 01)
-
-### 401 Data Structures, Code Challenges
-
-- Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.

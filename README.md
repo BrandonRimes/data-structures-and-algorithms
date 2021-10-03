@@ -4,9 +4,11 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 
 ## 401 Data Structures, Code Challenges
 
-[Challenges 1-3](java/README.md)
+[1-3](java/README.md)
 
-[Challenges 5-8](javads/lib/src/main/java/javads/linkedList/README.md) Linked Lists
+[5-9](javads/lib/src/main/java/javads/linkedList/README.md) Linked Lists
+
+10 [Stacks](javads/lib/src/main/java/javads/stack/README.md) & [Queues](javads/lib/src/main/java/javads/queue/README.md)
 
 ## 301 Code Challenges
 
